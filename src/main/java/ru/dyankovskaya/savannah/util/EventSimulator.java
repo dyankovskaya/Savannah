@@ -7,9 +7,9 @@ public class EventSimulator {
     public void startSimulation(Lion lion) {
         while (checkStatus(lion)) {
             int eventNum = (int) (Math.random() * 100);
-            if (eventNum >= 0 && eventNum < 20) {
+            if (eventNum >= 0 && eventNum < 18) {
                 sleep(lion);
-            } else if (eventNum >= 20 && eventNum < 28) {
+            } else if (eventNum >= 18 && eventNum < 28) {
                 exhausted(lion);
             } else if (eventNum >= 28 && eventNum < 36) {
                 eatZebra(lion);
@@ -46,7 +46,6 @@ public class EventSimulator {
         int energy = lion.getEnergy();
         energy = energy - 10;
         lion.setEnergy(energy);
-        lion.setHealth(lowEnergyDamage(lion));
         checkStatus(lion);
         System.out.println("Ops... The lion didn't catch anyone this time. Current health: "
                 + lion.getHealth() + ". Current energy: " + lion.getEnergy());
@@ -158,15 +157,8 @@ public class EventSimulator {
 
     private void warning(Lion lion) {
         if (lion.getEnergy() == 0) {
-            System.out.println("Seems like the lion needs some rest!");
+            lion.setHealth(lion.getHealth() - 5);
+            System.out.println("Seems like the lion needs some rest! Current health: " + lion.getHealth());
         }
-    }
-
-    private int lowEnergyDamage(Lion lion) {
-        int health = lion.getHealth();
-        if (lion.getEnergy() == 0) {
-            health = health - 5;
-        }
-        return health;
     }
 }
