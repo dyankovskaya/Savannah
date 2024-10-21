@@ -6,7 +6,13 @@ public class Lion {
     private final double APPETITE = 1.5;
 
     public void setHealth(int health) {
-        this.health = health;
+        if (health < 0) {
+            this.health = 0;
+        } else if (health > 100) {
+            this.health = 100;
+        } else {
+            this.health = health;
+        }
     }
 
     public int getHealth() {
@@ -14,7 +20,13 @@ public class Lion {
     }
 
     public void setEnergy(int energy) {
-        this.energy = energy;
+        if (energy < 0) {
+            this.energy = 0;
+        } else if (energy > 100) {
+            this.energy = 100;
+        } else {
+            this.energy = energy;
+        }
     }
 
     public int getEnergy() {
