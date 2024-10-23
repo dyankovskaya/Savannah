@@ -5,6 +5,10 @@ public class Lion {
     private int energy = 100;
     private final double APPETITE = 1.5;
 
+    public int getHealth() {
+        return this.health;
+    }
+
     public void setHealth(int health) {
         if (health < 0) {
             this.health = 0;
@@ -15,8 +19,8 @@ public class Lion {
         }
     }
 
-    public int getHealth() {
-        return this.health;
+    public int getEnergy() {
+        return this.energy;
     }
 
     public void setEnergy(int energy) {
@@ -28,11 +32,7 @@ public class Lion {
             this.energy = energy;
         }
     }
-
-    public int getEnergy() {
-        return this.energy;
-    }
-
+    
     public double getAPPETITE() {
         return this.APPETITE;
     }

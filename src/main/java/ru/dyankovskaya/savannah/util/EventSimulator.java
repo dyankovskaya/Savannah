@@ -4,35 +4,45 @@ import ru.dyankovskaya.savannah.entity.Lion;
 
 public class EventSimulator {
 
-    public void startSimulation(Lion lion) {
+    public void startSimulation(Lion lion) throws InterruptedException {
         while (checkStatus(lion)) {
             int eventNum = (int) (Math.random() * 100);
-            if (eventNum >= 0 && eventNum < 18) {
-                sleep(lion);
-            } else if (eventNum >= 18 && eventNum < 28) {
+            if (eventNum >= 0 && eventNum < 22) {
+                sleeping(lion);
+                Thread.sleep(1000);
+            } else if (eventNum >= 22 && eventNum < 28) {
                 exhausted(lion);
+                Thread.sleep(1000);
             } else if (eventNum >= 28 && eventNum < 36) {
                 eatZebra(lion);
+                Thread.sleep(1000);
             } else if (eventNum >= 36 && eventNum < 44) {
                 eatGazelle(lion);
+                Thread.sleep(1000);
             } else if (eventNum >= 44 && eventNum < 54) {
                 eatHyena(lion);
+                Thread.sleep(1000);
             } else if (eventNum >= 54 && eventNum < 60) {
                 lionKing(lion);
+                Thread.sleep(1000);
             } else if (eventNum >= 60 && eventNum < 73) {
                 hunter(lion);
+                Thread.sleep(1000);
             } else if (eventNum >= 73 && eventNum < 80) {
                 thorn(lion);
+                Thread.sleep(1000);
             } else if (eventNum >= 80 && eventNum < 90) {
                 fight(lion);
+                Thread.sleep(1000);
             } else if (eventNum > 90) {
                 hakunaMatata(lion);
+                Thread.sleep(1000);
             }
         }
         System.out.println("Unfortunately the lion died.");
     }
 
-    private void sleep(Lion lion) {
+    private void sleeping(Lion lion) {
         int energy = lion.getEnergy();
         energy = energy + 20;
         lion.setEnergy(energy);
